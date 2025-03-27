@@ -47,17 +47,16 @@ services:
 
   database:
     restart: "no"
-    ports:
-      - "5433:5433"
 
   java-backend:
     restart: "no"
     ports:
-      - "8000:8000"
+      - "8080:8080"
     build:
       context: .
+      dockerfile: DockerfileDev
     # command: sleep infinity  # Infinite loop to keep container alive doing nothing
-#    command: /bin/sh -c "./gradlew jooqCodegen && ./gradlew bootRun"
+#    command: ./gradlew bootRun --continuous
     develop:
       watch:
         - path: .
